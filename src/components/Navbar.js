@@ -1,85 +1,130 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import logo from "../images/logoweb.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Portofolio", href: "/portofolio" },
     { name: "Testimoni", href: "/testimoni" },
-    { name: "FAQ", href: "/faq" },
     { name: "Tentang", href: "/tentang" },
     { name: "Kontak", href: "/kontak" },
   ];
 
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50 top-0 left-0">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          SIGUPAY<span className="text-gray-800">.COM</span>
-        </Link>
+    <nav className="fixed w-full z-50 top-0 left-0 shadow-sm">
+      {/* Standard Glassmorphism Background */}
+      <div className="absolute inset-0 bg-white/90 backdrop-blur-md border-b border-gray-200/50"></div>
+      
+      <div className="relative container mx-auto px-6">
+        <div className="flex items-center justify-between py-3">
+          
+          {/* Logo - Standard Size */}
+          <Link href="/" className="flex items-center group flex-shrink-0">
+            <Image 
+              src={logo} 
+              alt="PADUM.COM Logo" 
+              width={250}
+              height={64}  
+              className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              priority
+            />
+          </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`relative group transition duration-300 font-medium ${
-                  isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
-                }`}
-              >
-                {link.name}
-                <span
-                  className={`absolute left-0 -bottom-1 w-full h-0.5 bg-blue-600 transition-transform duration-300 origin-left ${
-                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                ></span>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-gray-600 focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-full shadow-lg">
-          <div className="flex flex-col space-y-2 p-6">
+          {/* Desktop Menu - Balanced Right Aligned */}
+          <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`block px-4 py-2 rounded-lg font-medium transition duration-300 ${
-                    isActive
-                      ? "bg-blue-50 text-blue-600"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-blue-600"
+                  className={`relative group transition-all duration-300 font-bold text-sm uppercase tracking-widest ${
+                    isActive ? "text-blue-800" : "text-gray-900 hover:text-blue-800"
                   }`}
-                  onClick={() => setIsOpen(false)}
                 >
                   {link.name}
+                  <span
+                    className={`absolute left-0 -bottom-2 h-0.5 bg-gradient-to-r from-blue-700 to-blue-900 transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  ></span>
                 </Link>
               );
             })}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-gray-700 focus:outline-none hover:text-blue-600 transition"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
-      )}
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-white/95 backdrop-blur-lg border-t border-gray-200/50 absolute w-full left-0 top-full shadow-xl overflow-hidden"
+          >
+            <div className="flex flex-col space-y-1 p-6">
+              {navLinks.map((link, index) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={`block px-5 py-3 rounded-xl font-medium transition-all duration-300 ${
+                        isActive
+                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg"
+                          : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
+

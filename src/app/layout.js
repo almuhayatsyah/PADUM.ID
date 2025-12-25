@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
 
 export const metadata = {
-  title: "Jasa Pembuatan Website UMKM Profesional - Almuhayatsyah Studio",
+  title: "Jasa Pembuatan Website & Aplikasi Custom - PADUM.COM",
   description: "Jasa pembuatan website murah, cepat, dan profesional untuk UMKM. Landing page, company profile, toko online. Mulai 500rb!",
 };
 

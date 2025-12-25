@@ -19,7 +19,7 @@ const testimonials = [
   {
     name: "Rahmat Hidayat",
     role: "Direktur PT Konstruksi",
-    content: "Tim Almuhayatsyah Studio sangat mengerti kebutuhan bisnis kami. Company profile yang dibuat sangat membantu dalam meyakinkan klien-klien besar.",
+    content: "Tim PADUM.COM sangat mengerti kebutuhan bisnis kami. Company profile yang dibuat sangat membantu dalam meyakinkan klien-klien besar.",
     rating: 5,
     website: "#",
   },

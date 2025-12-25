@@ -10,9 +10,9 @@ export default function About() {
           />
         </div>
         <div className="md:w-1/2 space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-400">Tentang Almuhayatsyah Studio</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-400">Tentang PADUM.COM</h2>
           <p className="text-gray-300 text-lg leading-relaxed">
-            Almuhayatsyah Studio adalah bagian dari inisiatif <span className="font-semibold text-white">Abdya Go Digital</span>. Kami berdedikasi untuk mendigitalisasi bisnis UMKM dan Instansi melalui solusi sistem informasi yang terintegrasi, mulai dari POS, Kasir, hingga Aplikasi Manajemen Khusus.
+            PADUM.COM adalah bagian dari inisiatif <span className="font-semibold text-white">Abdya Go Digital</span>. Kami berdedikasi untuk mendigitalisasi bisnis UMKM dan Instansi melalui solusi sistem informasi yang terintegrasi, mulai dari POS, Kasir, hingga Aplikasi Manajemen Khusus.
           </p>
           <p className="text-gray-300 text-lg leading-relaxed">
             Tim kami terdiri dari desainer dan developer muda berbakat yang memiliki passion tinggi dalam menciptakan website yang tidak hanya bagus secara visual, tapi juga fungsional dan berdampak positif.

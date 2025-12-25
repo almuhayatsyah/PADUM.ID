@@ -14,7 +14,6 @@ export default function Home() {
       <Services />
       <Portfolio limit={3} />
       <Testimonials />
-      <FAQ />
       <About />
       <Contact />
     </>

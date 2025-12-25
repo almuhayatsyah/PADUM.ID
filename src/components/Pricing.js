@@ -77,7 +77,7 @@ export default function Pricing() {
           {pricingPlans.map((plan, index) => (
             <Link
               key={index}
-              href={`https://wa.me/6281234567890?text=Halo%20Almuhayatsyah%20Studio,%20saya%20tertarik%20dengan%20paket%20${plan.name}`}
+              href={`https://wa.me/6281234567890?text=Halo%20PADUM.COM,%20saya%20tertarik%20dengan%20paket%20${plan.name}`}
               target="_blank"
               rel="noopener noreferrer"
               className={`relative bg-white rounded-2xl p-8 shadow-lg border transition-transform duration-300 hover:scale-105 hover:shadow-xl ${

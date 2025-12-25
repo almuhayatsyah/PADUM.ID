@@ -3,8 +3,9 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="bg-gradient-to-br from-blue-50 to-white pt-32 pb-20 px-6">
-      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center">
+    <section id="home" className="bg-gradient-to-br from-blue-50 to-white pt-32 pb-20">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col-reverse md:flex-row items-center">
         <div className="md:w-1/2 text-center md:text-left space-y-6">
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
             Jasa Pembuatan Website, <span className="text-blue-600">Sistem POS & Aplikasi Kustom</span>
@@ -14,7 +15,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
             <Link
-              href="https://wa.me/6281234567890?text=Halo%20Almuhayatsyah%20Studio,%20saya%20mau%20konsultasi%20website"
+              href="https://wa.me/6281234567890?text=Halo%20PADUM.COM,%20saya%20mau%20konsultasi%20website"
               target="_blank"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
@@ -36,6 +37,7 @@ export default function Hero() {
             alt="Hero Illustration" 
             className="rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500"
            />
+         </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import logo from "../images/logoweb.png";
 
 export default function Footer() {
   return (
@@ -7,8 +9,14 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-2xl font-bold text-white mb-4 block">
-              Almuhayatsyah<span className="text-blue-500"> Studio</span>
+            <Link href="/" className="flex items-center mb-6 group">
+              <Image 
+                src={logo} 
+                alt="PADUM.COM Logo" 
+                width={200}
+                height={64}
+                className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
             <p className="text-gray-400 max-w-sm mb-6">
               Partner digital terbaik untuk UMKM. Kami membantu bisnis Anda tumbuh dengan website profesional dan strategi digital yang tepat.
@@ -42,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Almuhayatsyah Studio - Abdya Go Digital. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PADUM.COM - Abdya Go Digital. All rights reserved.</p>
         </div>
       </div>
     </footer>
