@@ -55,34 +55,54 @@ export default function Navbar() {
 
           {/* Desktop Menu - Balanced Right Aligned */}
           <div className="hidden md:flex items-center space-x-12">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`relative group transition-all duration-300 font-bold text-sm uppercase tracking-widest ${
-                    isActive ? "text-blue-800" : "text-gray-900 hover:text-blue-800"
-                  }`}
-                >
-                  {link.name}
-                  <span
-                    className={`absolute left-0 -bottom-2 h-0.5 bg-gradient-to-r from-blue-700 to-blue-900 transition-all duration-300 ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
+            <div className="flex items-center space-x-8">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative group transition-all duration-300 font-bold text-sm uppercase tracking-widest ${
+                      isActive ? "text-blue-800" : "text-gray-900 hover:text-blue-800"
                     }`}
-                  ></span>
-                </Link>
-              );
-            })}
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute left-0 -bottom-2 h-0.5 bg-gradient-to-r from-blue-700 to-blue-900 transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    ></span>
+                  </Link>
+                );
+              })}
+            </div>
+            
+            {/* CTA Button */}
+            <Link
+              href="https://wa.me/6281234567890?text=Halo%20PADUM.COM,%20saya%20mau%20konsultasi%20website"
+              target="_blank"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            >
+              Konsultasi Gratis
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-gray-700 focus:outline-none hover:text-blue-600 transition"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          <div className="md:hidden flex items-center space-x-4">
+             <Link
+                href="https://wa.me/6281234567890?text=Halo%20PADUM.COM,%20saya%20mau%20konsultasi%20website"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full font-bold text-xs transition-all shadow-md"
+              >
+                Konsultasi
+              </Link>
+            <button
+              className="text-gray-700 focus:outline-none hover:text-blue-600 transition"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 

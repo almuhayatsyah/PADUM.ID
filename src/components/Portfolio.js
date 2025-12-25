@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { ExternalLink, ChevronRight } from "lucide-react";
 import { projects } from "../data/projects";
 import FadeInSection from "./FadeInSection";
 
@@ -18,26 +19,27 @@ export default function DigitalServices({ limit }) {
   const displayedProjects = limit ? filteredProjects.slice(0, limit) : filteredProjects;
 
   return (
-    <section id="portofolio" className="py-20 bg-white">
+    <section id="portofolio" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <FadeInSection>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Layanan Digital</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-              Lihat berbagai solusi digital yang telah kami kembangkan untuk membantu bisnis tumbuh lebih cepat.
+            <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4">Portofolio Digital</h2>
+            <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Solusi Teruji & Terpercaya</h3>
+            <p className="text-gray-600 max-w-2xl mx-auto mb-12 text-lg leading-relaxed">
+              Jelajahi berbagai ekosistem digital yang telah kami bangun untuk memaksimalkan potensi bisnis mitra kami di seluruh Indonesia.
             </p>
 
             {!limit && (
               <FadeInSection delay={0.2}>
-                <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex flex-wrap justify-center gap-3 mb-12">
                   {categories.map((category) => (
                     <button
                       key={category}
                       onClick={() => setActiveCategory(category)}
-                      className={`px-6 py-2 rounded-full transition-all duration-300 ${
+                      className={`px-8 py-3 rounded-xl font-bold transition-all duration-300 ${
                         activeCategory === category
-                          ? "bg-blue-600 text-white shadow-lg scale-105"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                          ? "bg-blue-600 text-white shadow-xl scale-105"
+                          : "bg-white text-gray-600 border border-gray-200 hover:border-blue-300 hover:text-blue-600 shadow-sm"
                       }`}
                     >
                       {category}
@@ -49,28 +51,43 @@ export default function DigitalServices({ limit }) {
           </div>
         </FadeInSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {displayedProjects.map((project, index) => (
             <FadeInSection key={index} delay={index * 0.1}>
-              <Link
-                href={`/layanan-digital/${project.slug}`}
-                className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer block bg-gray-50 hover:shadow-2xl transition-all duration-300"
+              <motion.div
+                whileHover={{ y: -12 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center text-center p-4">
-                  <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-300 mb-4">{project.category}</p>
-                  <span
-                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
-                  >
-                    Lihat Detail <ExternalLink size={20} />
-                  </span>
-                </div>
-              </Link>
+                <Link
+                  href={`/layanan-digital/${project.slug}`}
+                  className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 h-full"
+                >
+                  <div className="relative overflow-hidden aspect-[4/3]">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      <div className="bg-blue-600 text-white p-3 rounded-full shadow-lg">
+                        <ExternalLink size={20} />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="p-8 flex flex-col flex-grow">
+                    <span className="text-blue-600 font-bold text-sm uppercase tracking-wider mb-2 block">
+                      {project.category}
+                    </span>
+                    <h4 className="text-2xl font-extrabold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                      {project.title}
+                    </h4>
+                    <div className="mt-auto flex items-center text-gray-500 font-medium group-hover:text-blue-600 transition-colors">
+                       Pelajari Selengkapnya <ChevronRight size={18} className="ml-1" />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             </FadeInSection>
           ))}
         </div>
@@ -91,4 +108,3 @@ export default function DigitalServices({ limit }) {
     </section>
   );
 }
-

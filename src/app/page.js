@@ -1,4 +1,5 @@
 import Hero from "../components/Hero";
+import Clients from "../components/Clients";
 import Services from "../components/Services";
 import Pricing from "../components/Pricing";
 import Portfolio from "../components/Portfolio";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Clients />
       <Services />
       <Portfolio limit={3} />
       <Testimonials />
