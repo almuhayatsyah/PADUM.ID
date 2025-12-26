@@ -1,12 +1,15 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section id="tentang" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-        <div className="md:w-1/2">
-          <img
+        <div className="md:w-1/2 relative h-[400px] w-full">
+          <Image
             src="https://placehold.co/600x400/1f2937/ffffff?text=Tim+Kami"
             alt="About Us"
-            className="rounded-2xl shadow-2xl"
+            fill
+            className="rounded-2xl shadow-2xl object-cover"
           />
         </div>
         <div className="md:w-1/2 space-y-6">

@@ -1,7 +1,9 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import heroImg from "../images/hero.png";
 
 export default function Hero() {
   const containerVariants = {
@@ -54,7 +56,7 @@ export default function Hero() {
             className="lg:w-1/2 text-center lg:text-left space-y-8"
           >
             <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl xl:text-7xl font-extrabold text-gray-900 leading-[1.1]">
-              Transformasi Digital <span className="text-blue-600">Bisnis Anda</span> Bersama Kami
+              Transformasi Digital <span className="text-green-600">Bisnis Anda</span> Bersama Kami
             </motion.h1>
             <motion.p variants={itemVariants} className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               Kami menghadirkan solusi teknologi mutakhir mulai dari Landing Page eksklusif, Sistem POS terintegrasi, hingga pengembangan Web App kustom untuk mengakselerasi pertumbuhan bisnis Anda.
@@ -81,11 +83,13 @@ export default function Hero() {
             transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
             className="lg:w-1/2 relative"
           >
-            <div className="absolute inset-0 bg-blue-600 rounded-2xl rotate-3 scale-[1.02] opacity-10 animate-pulse"></div>
-            <img 
-              src="https://placehold.co/800x600/3b82f6/ffffff?text=Modern+Solutions" 
+            <div className="absolute inset-0 bg-blue-600 rounded-2xl rotate-3 scale-[1.02] opacity-10"></div>
+            <Image 
+              src={heroImg} 
               alt="Digital Solutions Illustration" 
-              className="relative rounded-2xl shadow-2xl transition-transform duration-700 z-10 hover:rotate-0"
+              link="/portofolio"
+              className="relative rounded-2xl shadow-2xl transition-transform duration-700 z-10 hover:rotate-0 object-cover"
+              priority
             />
           </motion.div>
         </div>

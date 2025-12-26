@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useParams, notFound } from 'next/navigation';
 import { projects } from '../../../data/projects';
 import { ChevronLeft, Check, ExternalLink, Play, Monitor, Download } from 'lucide-react';
@@ -30,10 +31,13 @@ export default function ProjectDetailPage() {
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col">
           {/* Top: Image Section */}
           <div className="relative h-64 md:h-[500px] bg-gray-100">
-            <img 
+            <Image 
               src={project.image} 
               alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
                <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">

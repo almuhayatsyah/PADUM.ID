@@ -1,6 +1,5 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const clients = [
   { name: 'Klien 1', logo: 'https://placehold.co/200x100/f3f4f6/374151?text=Klien+1' },
@@ -50,12 +49,14 @@ export default function Clients() {
               key={index} 
               variants={itemVariants}
               whileHover={{ scale: 1.1, opacity: 1 }}
-              className="w-32 md:w-40 cursor-pointer"
+              className="w-32 md:w-40 cursor-pointer relative h-20"
             >
-              <img 
+              <Image 
                 src={client.logo} 
                 alt={client.name} 
-                className="w-full h-auto object-contain"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </motion.div>
           ))}
